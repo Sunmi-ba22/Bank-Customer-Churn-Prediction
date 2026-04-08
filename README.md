@@ -1,7 +1,7 @@
 #  Bank Customer Churn Prediction
 
 A full end-to-end data science portfolio project that predicts bank customer churn using machine learning.
-Built as part of my Data Science portfolio in preparation for fintech internship applications.
+Built as part of my Data Science portfolio.
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-name.streamlit.app)
 

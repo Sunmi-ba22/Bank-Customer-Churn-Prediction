@@ -7,7 +7,7 @@ import os
 # ── Page config ───────────────────────────────────────────────
 st.set_page_config(
     page_title="Customer Churn Predictor",
-    page_icon="🏦",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -112,21 +112,21 @@ def predict_churn(credit_score, age, tenure, balance, num_products,
 
 # ── Sidebar ───────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## 🏦 Customer Churn Predictor")
+    st.markdown("##  Customer Churn Predictor")
     st.markdown("*Bank Customer Retention Tool*")
     st.divider()
 
-    st.markdown("### 👤 Customer Demographics")
+    st.markdown("###  Customer Demographics")
     age       = st.slider("Age", 18, 92, 38)
     geography = st.selectbox("Geography", ["France", "Germany", "Spain"])
 
-    st.markdown("### 💳 Account Information")
+    st.markdown("###  Account Information")
     credit_score = st.slider("Credit Score", 350, 850, 650)
     tenure       = st.slider("Tenure (Years)", 0, 10, 5)
     balance      = st.number_input("Account Balance (£)", 0.0, 260000.0, 75000.0, step=1000.0)
     salary       = st.number_input("Estimated Salary (£)", 10000.0, 200000.0, 100000.0, step=1000.0)
 
-    st.markdown("### 📦 Product & Engagement")
+    st.markdown("###  Product & Engagement")
     num_products = st.selectbox("Number of Products", [1, 2, 3, 4], index=1)
     has_cr_card  = st.radio("Has Credit Card?", ["Yes", "No"], horizontal=True)
     is_active    = st.radio("Active Member?",   ["Yes", "No"], horizontal=True)
@@ -135,11 +135,11 @@ with st.sidebar:
     is_active_val   = 1 if is_active   == "Yes" else 0
 
     st.divider()
-    predict_btn = st.button("🔍 Predict Churn Risk", use_container_width=True, type="primary")
+    predict_btn = st.button(" Predict Churn Risk", use_container_width=True, type="primary")
 
 
 # ── Main panel ────────────────────────────────────────────────
-st.markdown('<div class="main-title">🏦 Bank Customer Churn Predictor</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title"> Bank Customer Churn Predictor</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Enter customer details in the sidebar and click Predict to assess churn risk</div>', unsafe_allow_html=True)
 
 # Model info strip
@@ -214,7 +214,7 @@ if predict_btn:
         col_r.caption("100% — Certain Churn")
 
     with col_detail:
-        st.markdown('<div class="section-header">📋 Customer Profile Summary</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-header"> Customer Profile Summary</div>', unsafe_allow_html=True)
 
         profile_data = {
             "Age":            age,
@@ -256,26 +256,26 @@ if predict_btn:
             safe_flags.append("Zero balance — lower churn risk segment (13.8%)")
 
         if risk_flags:
-            st.markdown("**⚠️ Risk signals:**")
+            st.markdown("** Risk signals:**")
             for flag in risk_flags:
-                st.markdown(f'<div class="insight-box">⚠️ {flag}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="insight-box"> {flag}</div>', unsafe_allow_html=True)
 
         if safe_flags:
-            st.markdown("**✅ Protective factors:**")
+            st.markdown("** Protective factors:**")
             for flag in safe_flags:
-                st.markdown(f'<div class="insight-box" style="border-color:#2196F3">✅ {flag}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="insight-box" style="border-color:#2196F3"> {flag}</div>', unsafe_allow_html=True)
 
         if not risk_flags and not safe_flags:
             st.info("No strong risk or protective signals detected for this profile.")
 
     # ── Recommended Actions ───────────────────────────────────
     st.markdown("---")
-    st.markdown("### 💡 Recommended Retention Actions")
+    st.markdown("###  Recommended Retention Actions")
 
     rec_col1, rec_col2, rec_col3 = st.columns(3)
 
     with rec_col1:
-        st.markdown("**🎯 Immediate**")
+        st.markdown("** Immediate**")
         if pct >= 60:
             st.markdown("- Assign dedicated relationship manager")
             st.markdown("- Offer personalised retention package")
@@ -289,7 +289,7 @@ if predict_btn:
             st.markdown("- Include in quarterly NPS survey")
 
     with rec_col2:
-        st.markdown("**📦 Product Actions**")
+        st.markdown("** Product Actions**")
         if num_products >= 3:
             st.markdown("- Review product fit — possible over-selling")
             st.markdown("- Consider product simplification offer")
@@ -301,7 +301,7 @@ if predict_btn:
             st.markdown("- Monitor satisfaction with existing products")
 
     with rec_col3:
-        st.markdown("**📍 Geographic Focus**")
+        st.markdown("** Geographic Focus**")
         if geography == "Germany":
             st.markdown("- Escalate to Germany retention team")
             st.markdown("- Apply local market retention offer")
@@ -312,7 +312,7 @@ if predict_btn:
 
 else:
     # Default state — project overview
-    st.markdown("### 📊 About This Model")
+    st.markdown("###  About This Model")
 
     tab1, tab2, tab3 = st.tabs(["Project Overview", "Model Performance", "Key EDA Findings"])
 
@@ -334,27 +334,27 @@ else:
 
     with tab2:
         perf_df = pd.DataFrame({
-            'Model':     ['Logistic Regression', 'Random Forest', 'Gradient Boosting ✅'],
+            'Model':     ['Logistic Regression', 'Random Forest', 'Gradient Boosting '],
             'AUC-ROC':   [0.768, 0.845, 0.860],
             'F1 Score':  [0.496, 0.562, 0.609],
             'Precision': [0.382, 0.804, 0.539],
             'Recall':    [0.708, 0.432, 0.700],
         })
         st.dataframe(perf_df, use_container_width=True, hide_index=True)
-        st.caption("✅ Gradient Boosting selected for deployment based on highest AUC-ROC, F1, and strong Recall")
+        st.caption(" Gradient Boosting selected for deployment based on highest AUC-ROC, F1, and strong Recall")
 
     with tab3:
         findings = [
-            ("🌍 Germany", "32.4% churn rate — nearly double France (16.2%) and Spain (16.7%)"),
-            ("📦 4 Products", "100% churn rate — cross-selling strategy needs urgent review"),
-            ("👴 Age 45–54", "~48% churn rate — highest risk demographic"),
-            ("💰 High Balance", "Churned customers hold £91K avg vs £73K for retained"),
-            ("💤 Inactive Members", "26.9% churn vs 14.3% for active — engagement is protective"),
-            ("💳 Credit Score", "Near-identical between groups — not a churn predictor"),
+            (" Germany", "32.4% churn rate — nearly double France (16.2%) and Spain (16.7%)"),
+            (" 4 Products", "100% churn rate — cross-selling strategy needs urgent review"),
+            (" Age 45–54", "~48% churn rate — highest risk demographic"),
+            (" High Balance", "Churned customers hold £91K avg vs £73K for retained"),
+            (" Inactive Members", "26.9% churn vs 14.3% for active — engagement is protective"),
+            (" Credit Score", "Near-identical between groups — not a churn predictor"),
         ]
         for title, desc in findings:
             st.markdown(f"**{title}** — {desc}")
 
 # ── Footer ────────────────────────────────────────────────────
 st.markdown("---")
-st.caption("Built by Lawal Sunmisola Barakat · Bank Customer Churn Prediction · Data Science Portfolio Project · 2025")
+st.caption("Built by Lawal Sunmisola Barakat · Bank Customer Churn Prediction · Data Science Portfolio Project · 2026")

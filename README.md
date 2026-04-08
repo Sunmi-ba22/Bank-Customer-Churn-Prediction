@@ -1,4 +1,4 @@
-# 🏦 Bank Customer Churn Prediction
+#  Bank Customer Churn Prediction
 
 A full end-to-end data science portfolio project that predicts bank customer churn using machine learning.
 Built as part of my Data Science portfolio in preparation for fintech internship applications.
@@ -7,13 +7,13 @@ Built as part of my Data Science portfolio in preparation for fintech internship
 
 ---
 
-## 🎯 Project Goal
+##  Project Goal
 
 Predict which bank customers are likely to churn (leave the bank), and surface the key drivers behind churn to support data-driven retention decisions.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 bank-churn-project/
@@ -36,7 +36,7 @@ bank-churn-project/
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 - **Source:** Bank customer records
 - **Size:** 10,000 customers, 12 features
@@ -47,23 +47,23 @@ bank-churn-project/
 
 ---
 
-## 🔬 Project Phases
+##  Project Phases
 
-### Phase 2 — Data Cleaning
+### Phase 2:  Data Cleaning
 - Handled missing values (median imputation for numeric, mode for categorical)
 - Removed 2 duplicate rows
 - Fixed decimal ages and incorrect data types
 - Final validation: 0 missing values, 0 duplicates, correct dtypes
 
-### Phase 3 — Exploratory Data Analysis
+### Phase 3:  Exploratory Data Analysis
 Key findings:
-- 🌍 **Germany** churn rate is **32.4%** — nearly double France (16.2%) and Spain (16.7%)
-- 📦 Customers with **4 products churn at 100%** — cross-selling strategy is broken
-- 👴 **Age 45–54** has ~48% churn rate — highest risk demographic
-- 💰 Churned customers hold **higher average balances** (£91K vs £73K) — high-value customers leaving
-- 💤 **Inactive members** churn at 26.9% vs 14.3% for active members
+-  **Germany** churn rate is **32.4%** — nearly double France (16.2%) and Spain (16.7%)
+-  Customers with **4 products churn at 100%** — cross-selling strategy is broken
+-  **Age 45–54** has ~48% churn rate — highest risk demographic
+-  Churned customers hold **higher average balances** (£91K vs £73K) — high-value customers leaving
+-  **Inactive members** churn at 26.9% vs 14.3% for active members
 
-### Phase 4 — Feature Engineering
+### Phase 4:  Feature Engineering
 Four new features created:
 | Feature | Formula | Insight |
 |---------|---------|---------|
@@ -75,21 +75,21 @@ Four new features created:
 - One-Hot Encoding applied to Geography
 - StandardScaler applied to 7 continuous features
 
-### Phase 5 — Modelling
+### Phase 5:  Modelling
 Three models trained and compared:
 
 | Model | AUC-ROC | F1 | Precision | Recall |
 |-------|---------|-----|-----------|--------|
 | Logistic Regression | 0.768 | 0.496 | 0.382 | 0.708 |
 | Random Forest | 0.845 | 0.562 | 0.804 | 0.432 |
-| **Gradient Boosting ✅** | **0.860** | **0.609** | 0.539 | **0.700** |
+| **Gradient Boosting ** | **0.860** | **0.609** | 0.539 | **0.700** |
 
 **Selected model:** Gradient Boosting Classifier
 - Trained on oversampled data (random oversampling on training set only)
 - Classification threshold tuned from 0.50 → **0.35** to maximise recall
 - 5-fold CV AUC: **0.934 ± 0.007**
 
-### Phase 6 — Deployment
+### Phase 6: Deployment
 Interactive Streamlit app that:
 - Accepts customer details as inputs
 - Returns churn probability and risk level
@@ -98,7 +98,7 @@ Interactive Streamlit app that:
 
 ---
 
-## 🚀 Run Locally
+##  Run Locally
 
 ```bash
 # Clone the repo
@@ -114,7 +114,7 @@ streamlit run app.py
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Tool | Purpose |
 |------|---------|
@@ -128,7 +128,7 @@ streamlit run app.py
 
 ---
 
-## 📈 Key Technical Decisions
+##  Key Technical Decisions
 
 - **Class imbalance:** Random oversampling applied to training data only — prevents data leakage
 - **Encoding:** One-Hot Encoding for Geography — no ordinal assumption, compatible with all model types
@@ -138,11 +138,10 @@ streamlit run app.py
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
-**Lawal Sunmisola Barakat**
-BSc Mathematics — Federal University of Agriculture, Abeokuta (FUNAAB)
+**Lawal Sunmisola**
+Data Scientist|Machine Learning Engineer
 
 ---
 
-*Built for fintech internship portfolio — 2025*
